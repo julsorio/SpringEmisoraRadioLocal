@@ -8,18 +8,14 @@
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/newportal.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newportal.css">
 
 <title>Grupos Musicales - Detalle</title>
 
@@ -40,7 +36,7 @@
 			<!-- Espacio de enlace de Volver -->
 			<div class="form-row">
 				<div class="col">
-					<a href="">Volver</a>
+					<a href="#" onclick="history.back();">Volver</a>
 				</div>
 			</div>
 			

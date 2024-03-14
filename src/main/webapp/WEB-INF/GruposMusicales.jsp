@@ -2,24 +2,21 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!doctype html>
 <html lang="en">
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- CSS -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/newportal.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/newportal.css">
 
 <title>Grupos Musicales</title>
 
@@ -71,10 +68,10 @@
 							<a href="${pageContext.request.contextPath}/emisora/detalle/${grupo.grupoId}">Detalle</a>
 						</div>
 						<div class="col">
-							<a href="${pageContext.request.contextPath}/ServletEmisora?accion=modificar&grupoId=${grupo.grupoId}">Modificar</a>
+							<a href="${pageContext.request.contextPath}/emisora/modificar/${grupo.grupoId}">Modificar</a>
 						</div>
 						<div class="col">
-							<a href="${pageContext.request.contextPath}/ServletEmisora?accion=baja&grupoId=${grupo.grupoId}">Eliminar</a>
+							<a href="${pageContext.request.contextPath}/emisora/baja/${grupo.grupoId}">Eliminar</a>
 						</div>
 					</div>
 				</c:forEach>
@@ -89,8 +86,18 @@
 			<div class="form-row">
 				<div class="col-1"></div>
 				 <span class="input-group-btn">
-					<input type="button" class="btn btn-info" value="Agregar grupo" onclick="" />
+					<form:form id="alta-grupo" autocomplete="off"
+						method="get" action="alta" >
+						<input type="submit" class="btn btn-info" value="Agregar grupo"  />
+					</form:form>
 				</span>
+			</div>
+			
+			<!-- Espacio para el mensaje -->
+			<div class="form-row">
+				<div class="col error">
+					<c:out value="${error}"></c:out>
+				</div>
 			</div>
 
 		</div>
