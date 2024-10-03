@@ -79,6 +79,8 @@
 			</div>
 
 			<p>	<br>	</p>
+			
+			<c:if test="${not empty grupo.componentes}">
 					
 			<!-- Espacio para la lista de componentes -->		
 			<div class="release">
@@ -93,16 +95,19 @@
 
 				<!-- Filas de datos de la tabla o de la lista -->
 
+				
 				<c:forEach var="componente" items="${grupo.componentes}">
 					<div class="form-row tableHeaderUser" style="font-size: small;">
 						<div class="col">${componente.nombre}</div>
 						<div class="col">${componente.instrumento}</div>
 					</div>
 				</c:forEach>
+			
 
 				<div class="col-11"></div>
 
 			</div>
+			</c:if>
 		
 		</div>
 	</div>

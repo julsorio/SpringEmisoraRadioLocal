@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.JDBCException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 import es.accenture.emisora.entidades.Grupo;
 import es.accenture.emisora.excepcion.ExcepcionPropia;
 
-@Transactional
+@Transactional(rollbackOn = ExcepcionPropia.class)
 @Service
 public class GrupoDAO implements IGrupoDAO {
 
@@ -48,7 +49,12 @@ public class GrupoDAO implements IGrupoDAO {
 	public void altaGrupo(Grupo grupo) throws ExcepcionPropia {
 		try {
 			getSession().save(grupo);
-		} catch (Exception e) {
+		} 
+		catch(JDBCException datae) {
+			datae.printStackTrace();
+			throw new ExcepcionPropia(datae.getMessage());
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			throw new ExcepcionPropia(e.getMessage());
 		}

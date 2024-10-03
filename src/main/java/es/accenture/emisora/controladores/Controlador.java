@@ -97,14 +97,19 @@ public class Controlador {
 	}
 	
 	@PostMapping("/insertar")
-	public ModelAndView insertarGrupo(@ModelAttribute("grupo") Grupo grupo, ModelMap model) {
+	public ModelAndView insertarGrupo(@ModelAttribute("grupo") Grupo grupo) {
+		ModelAndView modelAndView = null;
+		String mensaje = null;
+		
 		try {
 			grupoDAO.altaGrupo(grupo);
-			model.addAttribute("error", "El grupo " + grupo.getNombre() + " se ha dado de alta exitosamente");
+			mensaje = "El grupo " + grupo.getNombre() + " se ha dado de alta exitosamente";
 		} catch (ExcepcionPropia e) {
-			model.addAttribute("error", "Se ha producido un error al dar de alta el grupo " + grupo.getNombre() + e.getMessage());
+			mensaje = "Se ha producido un error al dar de alta el grupo " + grupo.getNombre() + e.getMessage();
 		}
 		
-		return new ModelAndView("redirect:/emisora/lista", model);
+		modelAndView = new ModelAndView("redirect:/emisora/lista");
+		modelAndView.addObject("error", mensaje);
+		return modelAndView;
 	}
 }
